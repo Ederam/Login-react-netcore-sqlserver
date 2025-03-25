@@ -22,8 +22,7 @@ Agregar Carpetas
 			con las mismas propiedades que se crearon para la tabla de base de datos
 			agregar anotacion con el nombre de la tabla de la base de datos
 			indicar cual es el primarykey
-	Context
-		AppDbContext
+	
 
 Adicionar proyecto a Git
 git init
@@ -33,3 +32,9 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/Ederam/Login-react-netcore-sqlserver.git
 git push -u origin main
+
+Agregar carpeta
+	Context
+		AppDbContext
+			hereda DBcontext
+Agregar paquete de entityFrameworkCore

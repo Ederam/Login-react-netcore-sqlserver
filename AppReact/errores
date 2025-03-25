@@ -1,0 +1,10 @@
+error al crear proyecto
+npx create-react-app loginReact
+Mensaje de error: 
+Cannot create a project named "loginReact" because of npm naming restrictions:
+
+  * name can no longer contain capital letters
+
+Please choose a different project name.
+Solucion: no se puede agregar la minuscula al nombre del proyecto, por lo que se ejecuta
+npx create-react-app loginreact

@@ -1,0 +1,28 @@
+
+Creacion de aplicacion React
+npx create-react-app loginreact
+
+agregar paquetes
+npm i 
+    react-router-dom => para el manejo de las rutas
+    axios => para las peticiones http
+    bootstrap => para los estilos
+    universal-cookie => para el manejo de las cookies o las variables de sesion
+    md5 => para implementar el algoritmo de cifrado para enviar el password
+npm i react-router-dom axios bootstrap universal-cookie md5
+
+Crear carpetas dentro de src
+    components
+    pages
+    routes
+        arrastrar App.js y cambiar a Routes.js
+    css
+        arrastrar archivo App.css y cambiart a Login.css
+opcional
+    borrar archivos que no se van a utilizar
+        App.test.js
+        logo.svg
+        serviceWorker.js
+        setupTests.js
+        index.css
+ 

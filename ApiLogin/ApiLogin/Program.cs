@@ -1,4 +1,8 @@
 using ApiLogin.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Logging;
+using System.Configuration;
+using System.Drawing;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +13,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 //uso de la clase de context para poder utilizarla en la aplicacion
-builder.Services.AddDbContext<AppDbContext>(options => builder.Configuration.GetConnectionString("ConexionBD"));
+//builder.Services.AddDbContext<AppDbContext>(options => builder.Configuration.GetConnectionString("ConexionBD"));
+
+builder.Services.AddDbContext<AppDbContext>(cfg =>
+{
+    cfg.UseSqlServer(builder.Configuration.GetConnectionString("ConexionBD"));
+});
+
+//services.AddTransient<IMyLogger, MyLogger>();
+
 
 var app = builder.Build();
 

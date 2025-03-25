@@ -48,5 +48,15 @@ Agregar paquete de entityFramework sqlserver
 
 configuracion de la clase context para poder utilizarla en la aplicacion
 
-
+--
+Agregar controlador
+	controlador de API con acciones que utilizan entityFramework
+	UsuariosCOntroller
+Agregar Metodo inicia
+	usar como base el metodo get
+	uso de LINQ para el metodo de iniciar sesion
+recompilar y probar 
+agregar en configuracion
+el lanzamiento del api de usuarios en D:\ER-DEV\.Net\LoginReactNetCoreSQLServer\ApiLogin\ApiLogin\Properties\launchSettings.json
+api/usuarios
 

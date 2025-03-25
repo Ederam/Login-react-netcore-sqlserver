@@ -1,0 +1,13 @@
+
+
+Error intentado Crear controlador para conectar con la tabla de usuarios de la base de datos
+Descripcion: There was an error running the selected code generator:
+	'No database provider has been configured for this DbContext. A provider can be configured by overriding the 'DbContext.OnConfiguring' 
+	method or by using 'AddDbContext' on the application service provider. 
+	If 'AddDbContext' is used, then also ensure that your DbContext type accepts a DbContextOptions<TContext> object in its constructor 
+	and passes it to the base constructor for DbContext.'
+Solucion:se agrego el uso del dbcontext en el program de la siguiente manera
+builder.Services.AddDbContext<AppDbContext>(cfg =>
+{
+    cfg.UseSqlServer(builder.Configuration.GetConnectionString("ConexionBD"));
+});

@@ -38,3 +38,15 @@ Agregar carpeta
 		AppDbContext
 			hereda DBcontext
 Agregar paquete de entityFrameworkCore
+
+configurar cadena de conexion en D:\ER-DEV\.Net\LoginReactNetCoreSQLServer\ApiLogin\ApiLogin\appsettings.json
+	"ConexionBD": "Data Source=(LocalDb)\\MyServer2025;Initial Catalog=GESTION_ESTUDIANTES;Integrated Security=True;Trusted_Connection=True;TrustServerCertificate=True;"
+	si la autenticacion al servidor fuera con windows
+	"ConexionBD": "Data Source=localhost;Initial Catalog=GESTION_ESTUDIANTES;Integrated Security=True;"
+
+Agregar paquete de entityFramework sqlserver
+
+configuracion de la clase context para poder utilizarla en la aplicacion
+
+
+

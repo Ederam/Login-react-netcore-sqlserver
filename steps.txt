@@ -1,0 +1,35 @@
+
+
+Login con React, asp.net Core y Sql Server
+
+Link Guia
+https://www.youtube.com/watch?v=4DQ0ssdo7Lo
+Login con React JS y ASP.NET Core Parte #1 || Tutorial en Español
+
+Creacion de tabla para usuarios
+identity con primary key
+password
+	uso de md5
+	eder123
+	00f199b698fd59bb0be70f4fd4cff491
+	https://www.md5.cz/
+
+Creacion de Proyecto 
+ASP.NET Core Web API
+Agregar Carpetas
+	Models
+		Usuarios
+			con las mismas propiedades que se crearon para la tabla de base de datos
+			agregar anotacion con el nombre de la tabla de la base de datos
+			indicar cual es el primarykey
+	Context
+		AppDbContext
+
+Adicionar proyecto a Git
+git init
+dotnet new gitignore  => en el caso de proyecto de .net
+ignorar carpeta de .vs
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Ederam/Login-react-netcore-sqlserver.git
+git push -u origin main

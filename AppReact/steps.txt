@@ -26,3 +26,20 @@ opcional
         setupTests.js
         index.css
  
+ --
+ Configuracion de rutas en archivo D:\ER-DEV\.Net\LoginReactNetCoreSQLServer\AppReact\loginreact\src\routes\Routes.js
+ crear paginas
+    Login.js
+    Menu.js
+agregar en las rutas del Route
+
+continuacion de video
+https://www.youtube.com/watch?v=Ez-EIxNjjhY
+Login con React JS y ASP.NET Core Parte #2 || Tutorial en Español
+
+limpiar y editar index
+import App from './App'; por
+import Routes from './routes/Routes';
+
+
+

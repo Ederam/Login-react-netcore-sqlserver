@@ -1,15 +1,22 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Login from '../pages/Login';
+import { React, StrictMode } from 'react';
+import {BrowserRouter, Switch, Route,Routes} from 'react-router-dom';
 import Menu from '../pages/Menu';
+import Login from '../pages/Login';
 
 function App() {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path='/' component={<Login />}/>
-        <Route path='/menu' component={<Menu />}/>        
-      </Switch>
+      {/* <Switch> */}
+        <StrictMode>
+          <Routes>
+          {/* <Route exact path="/" component={Login}/>
+          <Route exact path="/menu" component={Menu}/> */}
+          <Route exact path="/" element={<Login/>}/>
+          <Route exact path="/menu" element={<Menu/>}/>
+          </Routes>
+        </StrictMode>
+        
+      {/* </Switch> */}
     </BrowserRouter>
   );
 }

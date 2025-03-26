@@ -41,5 +41,9 @@ limpiar y editar index
 import App from './App'; por
 import Routes from './routes/Routes';
 
-
+---
+Creacion de Login
+se adicionan los estilos
+iniciar aplicacion
+Se revisan errores y se edita codigo para que cargue la pagina, ver archivos de errores
 

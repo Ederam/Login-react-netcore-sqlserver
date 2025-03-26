@@ -8,3 +8,63 @@ Cannot create a project named "loginReact" because of npm naming restrictions:
 Please choose a different project name.
 Solucion: no se puede agregar la minuscula al nombre del proyecto, por lo que se ejecuta
 npx create-react-app loginreact
+------------------
+error en el navagador 
+Mensaje de error:
+Uncaught TypeError: react_dom__WEBPACK_IMPORTED_MODULE_1__.render is not a function
+
+Sugerencia
+agregar
+  import {StrictMode} from 'react';
+
+  root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
+Sugerencia 2
+import { createRoot } from 'react-dom/client';
+
+const root = createRoot(document.getElementById('root'));
+root.render(<Router />);
+Sugerencia 3
+import ReactDOM from 'react-dom';
+const root = createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <Routes />
+  </React.StrictMode>,
+  document.getElementById('root')
+  
+);
+Resultado
+A <Route> is only ever to be used as the child of <Routes> element, never rendered directly. Please wrap your <Route> in a <Routes>.
+solucion
+Se agrega Routes y se agregan los Route dentro del mismo dentro del archivo de Routes
+import {BrowserRouter, Switch, Route,Routes} from 'react-router-dom';
+<Routes>
+          <Route exact path="/" component={Login}/>
+          <Route exact path="/menu" component={Menu}/>          
+          </Routes>
+Resultado
+You passed a container to the second argument of root.render(...). You don't need to pass it again since you already passed it to create the root.
+overrideMethod @ hook.js:608
+ReactDOMHydrationRoot.render.ReactDOMRoot.render @ react-dom-client.development.js:24456
+hook.js:608 Matched leaf route at location "/" does not have an element or Component. This means it will render an <Outlet /> with a null value by default resulting in an "empty" page. Error Component Stack
+Solucion
+Cambiar
+<Routes>
+          <Route exact path="/" component={Login}/>
+          <Route exact path="/menu" component={Menu}/>
+          a
+          <Route exact path="/" element={<Login/>}/>
+          <Route exact path="/menu" element={<Menu/>}/>
+          </Routes>
+
+Resultado
+carga la pagina, aunque sale un error
+index.js:10 You passed a container to the second argument of root.render(...). You don't need to pass it again since you already passed it to create the root.
+
+
+
+

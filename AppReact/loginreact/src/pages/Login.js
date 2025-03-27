@@ -1,17 +1,19 @@
-import React, {useState, useEffect} from 'react';
+//import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import md5 from 'md5';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import '../css/Login.css';
+import { useNavigate } from 'react-router-dom';
 
 function Login(props) {
 
 //const baseUrl="https://localhost:44322/api/usuarios";
-//http://localhost:5043/swagger/index.html
-//https://localhost:44391/api/Usuarios/ederam/00f199b698fd59bb0be70f4fd4cff491
 const baseUrl="https://localhost:44391/api/usuarios";
 const cookies = new Cookies();
+
+let navigate = useNavigate();
 
 const [form, setForm]=useState({
   username:'',
@@ -32,16 +34,19 @@ const [form, setForm]=useState({
     }).then(response=>{
       if(response.length>0){
         var respuesta=response[0];
-        console.log(respuesta);
-        // cookies.set('id', respuesta.id, {path: '/'});
-        // cookies.set('apellido_paterno', respuesta.apellido_paterno, {path: '/'});
-        // cookies.set('apellido_materno', respuesta.apellido_materno, {path: '/'});
-        // cookies.set('nombre', respuesta.nombre, {path: '/'});
-        // cookies.set('correo', respuesta.correo, {path: '/'});
-        // cookies.set('username', respuesta.username, {path: '/'});
-        // cookies.set('password', respuesta.password, {path: '/'});
-        // alert("Bienvenido: "+respuesta.nombre+" "+respuesta.apellido_paterno);
-        // props.history.push('/menu');
+        cookies.set('id', respuesta.id, {path: '/'});
+        cookies.set('apellido_paterno', respuesta.apellido_paterno, {path: '/'});
+        cookies.set('apellido_materno', respuesta.apellido_materno, {path: '/'});
+        cookies.set('nombre', respuesta.nombre, {path: '/'});
+        cookies.set('correo', respuesta.correo, {path: '/'});
+        cookies.set('username', respuesta.username, {path: '/'});
+        cookies.set('password', respuesta.password, {path: '/'});
+        alert("Bienvenido: "+respuesta.nombre+" "+respuesta.apellido_paterno);
+        //console.log('this.props', this.props);
+        console.log('props',props);
+        
+        navigate('/menu');
+        //props.history.push('/menu');
       }else{
         alert('El usuario o la contraseña no son correctos');
       }
@@ -52,11 +57,11 @@ const [form, setForm]=useState({
     })
   }
 
-  useEffect(()=>{
-if(cookies.get('id')){
-  props.history.push('/menu');
-}
-  },[]);
+//   useEffect(()=>{
+// if(cookies.get('id')){
+//   props.history.push('/menu');
+// }
+//   },[]);
 
     return (
         <div className="containerPrincipal">

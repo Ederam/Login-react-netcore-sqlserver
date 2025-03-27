@@ -1,5 +1,5 @@
 import { React, StrictMode } from 'react';
-import {BrowserRouter, Switch, Route,Routes} from 'react-router-dom';
+import {BrowserRouter,  Route,Routes } from 'react-router-dom';
 import Menu from '../pages/Menu';
 import Login from '../pages/Login';
 
@@ -12,7 +12,10 @@ function App() {
           {/* <Route exact path="/" component={Login}/>
           <Route exact path="/menu" component={Menu}/> */}
           <Route exact path="/" element={<Login/>}/>
-          <Route exact path="/menu" element={<Menu/>}/>
+          {/* <Route exact path="/menu" element={<Menu/>}/> */}
+          {/* <Route exact path="/menu" component={Menu} /> */}
+          {/* <Redirect to='/menu' /> */}
+          <Route path="/menu" element={<Menu />} />
           </Routes>
         </StrictMode>
         

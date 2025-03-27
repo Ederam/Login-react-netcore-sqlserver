@@ -42,6 +42,7 @@ A <Route> is only ever to be used as the child of <Routes> element, never render
 solucion
 Se agrega Routes y se agregan los Route dentro del mismo dentro del archivo de Routes
 import {BrowserRouter, Switch, Route,Routes} from 'react-router-dom';
+import Menu from './loginreact/src/pages/Menu'
 <Routes>
           <Route exact path="/" component={Login}/>
           <Route exact path="/menu" component={Menu}/>          
@@ -64,7 +65,19 @@ Cambiar
 Resultado
 carga la pagina, aunque sale un error
 index.js:10 You passed a container to the second argument of root.render(...). You don't need to pass it again since you already passed it to create the root.
+Sugerencia 2
+quitar document.getElementById('root') del archivo index
+resultado funciona correctamente
 
+Error redirigiendo a Menu
+Mensaje de error:
+Cannot read properties of undefined (reading 'push')
 
-
-
+Error
+se ajusta para poder navegar a otra pagina
+Mensaje de error:
+React Hook "useNavigate" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function
+Se realizo ajuste
+import { useNavigate } from 'react-router-dom';
+let navigate = useNavigate();
+navigate('/menu');

@@ -55,3 +55,25 @@ Creacion de metodo para inicio de sesion
 agregar cors
 Se realiza ultima configuracion  y alprobar se ve que el puerto no estaba igual
 
+----
+Continuacion video
+https://www.youtube.com/watch?v=F8FOivgA700
+Login con React JS y ASP.NET Core Parte #3 y FINAL || Tutorial en Español
+
+Guardar los datos en las cookies
+seterar los valores obtenidos
+para que funcione correctamente el enrutamiento se agrega exact en Routes
+<Route exact path="/" element={<Login/>}/>
+ocupamos los props
+    function Login(props) {
+redireccionar al menu despues de la alerta
+    props.history.push('/menu');
+Creacion de Interfaz del Menu
+    obtenemos los valores de los cookies
+agregar boton de cerrar sesion            
+agregar estilo para alinear el texto al centro
+agregar los estilos
+metodo para cerrar sesion y redirigir al login
+Se ajusta para navegar hacia otra pagina
+
+

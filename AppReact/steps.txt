@@ -47,3 +47,11 @@ se adicionan los estilos
 iniciar aplicacion
 Se revisan errores y se edita codigo para que cargue la pagina, ver archivos de errores
 
+-----
+ejecutar mla aplicacion npm start
+Obtener los valores del Login
+Uso de estado
+Creacion de metodo para inicio de sesion
+agregar cors
+Se realiza ultima configuracion  y alprobar se ve que el puerto no estaba igual
+

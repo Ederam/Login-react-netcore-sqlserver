@@ -3,8 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Logging;
 using System.Configuration;
 using System.Drawing;
+using System.Security.Policy;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// configuracion cors
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 
 // Add services to the container.
 
@@ -22,7 +27,46 @@ builder.Services.AddDbContext<AppDbContext>(cfg =>
     cfg.UseSqlServer(builder.Configuration.GetConnectionString("ConexionBD"));
 });
 
-//services.AddTransient<IMyLogger, MyLogger>();
+////Agregar cors
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("NewPolicy", app =>
+//    {
+//        app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000/");
+//    });
+//});
+
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy(name: MyAllowSpecificOrigins,
+//                      policy =>
+//                      {
+//                          policy.WithOrigins("http://localhost:3000/").AllowAnyHeader()
+//                                                  .AllowAnyMethod(); 
+//                      });
+//});
+
+//Configuracion CORS
+//builder.Services.AddCors(options =>
+//{
+//    options.AddDefaultPolicy(
+//        builder =>
+//        {
+//            builder.WithOrigins(
+//                "https://apirequest.io",
+//                "https://resttesttest.com"
+//                )
+//            .SetIsOriginAllowed(origin => new Url(origin).Host == "localhost")
+//            .AllowAnyMethod()
+//            .AllowAnyHeader();
+//        });
+//});
+
+//Adicionando Cors
+builder.Services.AddCors(policyBuilder =>
+    policyBuilder.AddDefaultPolicy(policy =>
+        policy.WithOrigins("*").AllowAnyHeader().AllowAnyMethod())
+);
 
 
 var app = builder.Build();
@@ -36,6 +80,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseStaticFiles();
+app.UseCors();
+//app.UseCors("NewPolicy");
+//app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthorization();
 
 app.MapControllers();

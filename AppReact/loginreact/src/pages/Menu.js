@@ -1,10 +1,13 @@
 import React, {useEffect} from 'react';
 import Cookies from 'universal-cookie';
 import '../css/Menu.css';
+import { useNavigate } from 'react-router-dom';
+
 
 function Menu(props) {
 
     const cookies = new Cookies();
+    let navigate = useNavigate();
 
     const cerrarSesion=()=>{
         cookies.remove('id', {path: '/'});
@@ -15,13 +18,15 @@ function Menu(props) {
         cookies.remove('username', {path: '/'});
         cookies.remove('password', {path: '/'});
         //props.history.push('./');
+        navigate('/');
     }
 
-    // useEffect(()=>{
-    //     if(!cookies.get('id')){
-    //         props.history.push('./');
-    //     }
-    //       },[]);
+    useEffect(()=>{
+        if(!cookies.get('id')){
+            //props.history.push('./');
+            navigate('/');
+        }
+          },[]);
 
     return (
         <div className="containerMenu">

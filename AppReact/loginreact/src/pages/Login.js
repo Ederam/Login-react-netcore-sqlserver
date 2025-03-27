@@ -1,5 +1,5 @@
-//import React, {useState, useEffect} from 'react';
-import React, { useState } from 'react';
+import React, {useState, useEffect} from 'react';
+//import React, { useState } from 'react';
 import md5 from 'md5';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from 'universal-cookie';
@@ -57,11 +57,12 @@ const [form, setForm]=useState({
     })
   }
 
-//   useEffect(()=>{
-// if(cookies.get('id')){
-//   props.history.push('/menu');
-// }
-//   },[]);
+  useEffect(()=>{
+if(cookies.get('id')){
+  //props.history.push('/menu');
+  navigate('/menu');
+}
+  },[]);
 
     return (
         <div className="containerPrincipal">

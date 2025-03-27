@@ -60,6 +60,9 @@ Continuacion video
 https://www.youtube.com/watch?v=F8FOivgA700
 Login con React JS y ASP.NET Core Parte #3 y FINAL || Tutorial en Español
 
+codigo guia
+https://github.com/Borja95/reactAppLoginAspNetCore
+
 Guardar los datos en las cookies
 seterar los valores obtenidos
 para que funcione correctamente el enrutamiento se agrega exact en Routes
@@ -76,4 +79,7 @@ agregar los estilos
 metodo para cerrar sesion y redirigir al login
 Se ajusta para navegar hacia otra pagina
 
+------
+Se ajusta navegacion y funcionalidad de cerrar sesion
+Ajustar que para cuando la sesion ya este iniciada nos redirija al menu y cunado no este iniciada nos redirija al login
 

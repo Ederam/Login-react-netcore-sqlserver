@@ -7,12 +7,13 @@ import { useNavigate } from 'react-router-dom';
 function Estudiante() {
     //Variable para la url 
     //const baseUrl = "http://localhost:5190/api/Estudiante/ListarEstudiantes";
-    const baseUrl = "http://localhost:5190/api/Estudiante";
+    const baseUrl = "http://localhost:5190/api/Estudiante/";                    
 
     //Uso de estado
     const [data, setData] = useState([]);
     //estado para controlar cuando se abre o cierra el
     const [modalInsertar, setModalInsertar]=useState(false);
+    const [modalEditar, setModalEditar]=useState(false);
     const [estudianteSeleccionado, setEstudianteSeleccionado]=useState({
         nombreCompleto: ''
     });
@@ -23,6 +24,11 @@ function Estudiante() {
         peticionGet();
     }
 
+    const abrirCerrarModalEditar=()=>{
+        setModalEditar(!modalEditar);
+        //peticionGet();
+    }
+    
     //metodo para capturar los valores
     const handleChange=e=>{
         const {name, value}=e.target;
@@ -33,9 +39,15 @@ function Estudiante() {
         console.log(estudianteSeleccionado);        
     };
 
+    const seleccionarEstudiante=(estudiante, caso)=>{
+        setEstudianteSeleccionado(estudiante);
+        (caso==="Editar") && 
+        abrirCerrarModalEditar();
+    }
+
     //Peticion para obtener los datos de la API
     const peticionGet=async() =>{
-        await axios.get(baseUrl+'/ListarEstudiantes')
+        await axios.get(baseUrl+'ListarEstudiantes')
         .then(response=>{
             let dataSim = [
                 {
@@ -73,6 +85,26 @@ function Estudiante() {
         })
     }
 
+    //Peticion Put para crear Estudiante
+    const peticionPut=async() =>{
+        console.log(estudianteSeleccionado);
+        estudianteSeleccionado.materia = "";
+        estudianteSeleccionado.nombre_Profesor = "";
+        await axios.put(baseUrl,estudianteSeleccionado)
+        .then(response=>{            
+            var respuesta = response.data;
+            var dataAuxiliar = data;
+            dataAuxiliar.map(estudiante=>{
+                if (estudiante.id_Estudiante===estudianteSeleccionado.id_Estudiante) {
+                    estudiante.nombreCompleto = estudianteSeleccionado.nombreCompleto;
+                }
+            })
+            abrirCerrarModalEditar();       
+        }).catch(error=>{
+            console.log(error);            
+        })
+    }
+
     useEffect(()=>{
         peticionGet();
     },[]);
@@ -100,14 +132,14 @@ function Estudiante() {
                             <td>{estudiante.materia}</td>
                             <td>{estudiante.nombre_Profesor}</td>
                             <td>
-                                <button className='btn btn-primary'>Editar</button>
+                                <button className='btn btn-primary' onClick={()=>seleccionarEstudiante(estudiante, "Editar")}>Editar</button>
                                 <button className='btn btn-warning'>Eliminar</button>
                             </td>
                         </tr>
                     ))}
                 </tbody>                
             </table>
-            {/* Modal */}
+            {/* Modal Insertar*/}
             <Modal isOpen={modalInsertar}>
                 <ModalHeader>Insertar Estudiante</ModalHeader>
                 <ModalBody>
@@ -120,6 +152,26 @@ function Estudiante() {
                 <ModalFooter>
                     <button className='btn btn-primary' onClick={()=>peticionPost()}>Insertar</button>
                     <button className='btn btn-danger' onClick={()=>abrirCerrarModalInsertar()}>Cancelar</button>
+                </ModalFooter>
+            </Modal>
+
+            {/* modal editar */}
+            <Modal isOpen={modalEditar}>
+                <ModalHeader>Editar Estudiante</ModalHeader>
+                <ModalBody>
+                    <div className='form-group'>
+                        <label>Código del Estudiante: </label>
+                        <br />
+                        <input type='text' className='form-control' name='id_Estudiante' readOnly value={estudianteSeleccionado && estudianteSeleccionado.id_Estudiante}/>                        
+                        <br />
+                        <label>Nombre del Estudiante: </label>
+                        <br />
+                        <input type='text' className='form-control' name='nombreCompleto' onChange={handleChange} value={estudianteSeleccionado && estudianteSeleccionado.nombreCompleto}/>                        
+                    </div>
+                </ModalBody>
+                <ModalFooter>
+                    <button className='btn btn-primary' onClick={()=>peticionPut()}>Editar</button>
+                    <button className='btn btn-danger' onClick={()=>abrirCerrarModalEditar()}>Cancelar</button>
                 </ModalFooter>
             </Modal>
         </div>

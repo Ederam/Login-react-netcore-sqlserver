@@ -129,5 +129,13 @@ crear boton para abrir el modal insertar
 agregar clases de boostrap al boton 
 
 ---
+editar
+crear modal
+campo de solo lectura
+crear estado para abrir o cerrar modal
+metodo para asignar el estado
+asignar el metodo al evento clcik de la accion editar
+crear peticion put
 
+----
 

@@ -112,5 +112,22 @@ La peticion se debe llaamr dentro del useEffect
 Los datos cargados no se estan mostrando en la pantalla y no salen errores
 Se ajusta para que muestren los datos
 
+----
+https://www.youtube.com/watch?v=7pSHPa_ZSSE
+CRUD FullStack React JS, ASP.NET Core y SQL Server || Tutorial en Español || Parte 4 Y FINAL
+
+vamos en el 3 aun
+https://www.youtube.com/watch?v=A8o2ZUvOtGQ
+CRUD FullStack React JS, ASP.NET Core y SQL Server || Tutorial en Español || Parte 3
+
+Creacion de peticion Post para la insercion
+creacion de la ventana modal
+creacion de metodo para capturar lo que el usuario escribe en los inputs
+agregar estado para controlar cuando se abre y se cierra el modal
+crear  la peticion post
+crear boton para abrir el modal insertar
+agregar clases de boostrap al boton 
+
+---
 
 

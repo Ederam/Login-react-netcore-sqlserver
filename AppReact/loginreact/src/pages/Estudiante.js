@@ -6,14 +6,36 @@ import { useNavigate } from 'react-router-dom';
 
 function Estudiante() {
     //Variable para la url 
-    const baseUrl = "http://localhost:5190/api/Estudiante/ListarEstudiantes";
+    //const baseUrl = "http://localhost:5190/api/Estudiante/ListarEstudiantes";
+    const baseUrl = "http://localhost:5190/api/Estudiante";
 
     //Uso de estado
     const [data, setData] = useState([]);
+    //estado para controlar cuando se abre o cierra el
+    const [modalInsertar, setModalInsertar]=useState(false);
+    const [estudianteSeleccionado, setEstudianteSeleccionado]=useState({
+        nombreCompleto: ''
+    });
+
+    //metodo para cambiar el estado del modal
+    const abrirCerrarModalInsertar=()=>{
+        setModalInsertar(!modalInsertar);
+        peticionGet();
+    }
+
+    //metodo para capturar los valores
+    const handleChange=e=>{
+        const {name, value}=e.target;
+        setEstudianteSeleccionado({
+            ...estudianteSeleccionado,
+            [name]: value
+        });
+        console.log(estudianteSeleccionado);        
+    };
 
     //Peticion para obtener los datos de la API
     const peticionGet=async() =>{
-        await axios.get(baseUrl)
+        await axios.get(baseUrl+'/ListarEstudiantes')
         .then(response=>{
             let dataSim = [
                 {
@@ -32,6 +54,20 @@ function Estudiante() {
             console.log(response.data);            
             setData(response.data);
             //setData(dataSim);
+            //cerrar el modal
+            //abriCerrarModalInsertar();
+        }).catch(error=>{
+            console.log(error);            
+        })
+    }
+
+    //Peticion Post para crear Estudiante
+    const peticionPost=async() =>{
+        delete estudianteSeleccionado.id_Estudiante;
+        await axios.post(baseUrl,estudianteSeleccionado)
+        .then(response=>{            
+            setData(data.concat(response.data));     
+            abrirCerrarModalInsertar();       
         }).catch(error=>{
             console.log(error);            
         })
@@ -43,6 +79,9 @@ function Estudiante() {
 
     return (
         <div className='App'>
+            <br></br>
+            {/* boton para abrir el modal insertar */}
+            <button onClick={()=>abrirCerrarModalInsertar()} className='btn btn-primary'>Insertar Nuevo estudiante</button>
             <table className='table table-bordered'>
                 <thead>
                     <tr>
@@ -68,6 +107,21 @@ function Estudiante() {
                     ))}
                 </tbody>                
             </table>
+            {/* Modal */}
+            <Modal isOpen={modalInsertar}>
+                <ModalHeader>Insertar Estudiante</ModalHeader>
+                <ModalBody>
+                    <div className='form-group'>
+                        <label>Nombre del Estudiante: </label>
+                        <br />
+                        <input type='text' className='form-control' name='nombreCompleto' onChange={handleChange}/>                        
+                    </div>
+                </ModalBody>
+                <ModalFooter>
+                    <button className='btn btn-primary' onClick={()=>peticionPost()}>Insertar</button>
+                    <button className='btn btn-danger' onClick={()=>abrirCerrarModalInsertar()}>Cancelar</button>
+                </ModalFooter>
+            </Modal>
         </div>
     );
 

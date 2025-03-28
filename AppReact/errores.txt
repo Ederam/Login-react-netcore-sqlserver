@@ -81,3 +81,8 @@ Se realizo ajuste
 import { useNavigate } from 'react-router-dom';
 let navigate = useNavigate();
 navigate('/menu');
+
+Error al cargar estudiante
+Mensaje de error:
+Each child in a list should have a unique "key" prop.
+

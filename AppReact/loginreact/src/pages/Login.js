@@ -45,7 +45,8 @@ const [form, setForm]=useState({
         //console.log('this.props', this.props);
         console.log('props',props);
         
-        navigate('/menu');
+        //navigate('/menu');
+        navigate('/estudiante');
         //props.history.push('/menu');
       }else{
         alert('El usuario o la contraseña no son correctos');

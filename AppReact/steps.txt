@@ -83,3 +83,34 @@ Se ajusta para navegar hacia otra pagina
 Se ajusta navegacion y funcionalidad de cerrar sesion
 Ajustar que para cuando la sesion ya este iniciada nos redirija al menu y cunado no este iniciada nos redirija al login
 
+-----
+https://www.youtube.com/watch?v=A8o2ZUvOtGQ
+CRUD FullStack React JS, ASP.NET Core y SQL Server || Tutorial en Español || Parte 3
+
+instalar paquetes a utilizar
+npm i 
+    reactstrap ==> para las ventanas modales
+npm i reactstrap
+creacion de pagina para estudiante
+
+peticion para obtener de estudiantes
+http://localhost:5190/api/Estudiante/ListarEstudiantes
+
+{
+    "id_Estudiante": 1,
+    "nombreCompleto": "EDER CAMILO RAMIREZ",
+    "materia": null,
+    "nombre_Profesor": null
+  }
+
+Crear peticion para obtener la informacion
+crear estado
+crear useffect para uso de Hooks
+adicionar la url en una variable para usar en la aplicacion
+la peticion get debe ser asincrona para que trabaje en segundo plano
+La peticion se debe llaamr dentro del useEffect
+Los datos cargados no se estan mostrando en la pantalla y no salen errores
+Se ajusta para que muestren los datos
+
+
+
